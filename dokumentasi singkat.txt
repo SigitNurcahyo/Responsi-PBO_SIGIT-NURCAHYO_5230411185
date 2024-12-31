@@ -1,0 +1,74 @@
+Deskripsi Aplikasi
+
+Aplikasi ini adalah sistem manajemen produk dan transaksi sederhana yang menggunakan antarmuka berbasis GUI (Graphical User Interface) dengan Python dan library Tkinter. Aplikasi ini memungkinkan pengguna untuk:
+
+Mengelola data produk (menambah, memperbarui, menghapus produk).
+
+Mengelola data transaksi (menambah, melihat, dan menghapus transaksi).
+
+Menampilkan daftar produk dan transaksi dengan format yang mudah dibaca.
+
+Aplikasi ini terhubung dengan database MySQL bernama retail_db untuk menyimpan data produk dan transaksi secara permanen.
+
+
+
+
+
+Cara Menjalankan Aplikasi
+
+1. Persiapan Lingkungan:
+   - Pastikan Python 3 telah terinstal di komputer Anda.
+   - Instal library yang diperlukan menggunakan perintah:
+     ```bash
+     pip install mysql-connector-python
+     ```
+
+2. Persiapan Database:
+   - Pastikan server MySQL berjalan di komputer Anda.
+   - Buat database dengan nama retail_db dan buat table nya
+
+3. Menjalankan GUI:
+  Manajemen Produk
+  1.fitur tambah produk:
+	masukan (nama produk) lalu (harga produk) harus seperti ini 10000 maka yang akan muncul di Daftar produk nanti akan menjadi seperti ini (10.000)
+	pada saat masukan (harga produk) jangan menggunkan (.) misal 10.000 nanti hasil yang akan muncul jadi (10)
+  2.fitur update produk:
+	pilih produk yang akan di update di Daftar produk lalu isikan (Nama produk) dan (Harga produk) yang baru setelah itu tekan Button Update Produk
+  3.fitue Hapus produk:
+	pilih produk yang akan di hapus di Daftar produk lalu setelah itu tekan Button Hapus Produk
+
+
+  Proses Transaksi
+ 1.fitur tambah transaksi:
+	pilih produk menggunakan dropdown lalu masukan jumlah produk yang ingi di beli.
+	misal produk yang di pilih Beras lalu masukan jumlah produk 5 dan misalnya harga 1 beras itu 10.000 maka hasil yang akan keluar di Daftar Produk menjadi 50.000
+ 2.fitur Hapus transaksi:
+	saya tambahkan fitur tersebut karena jika orang salah memasukan produk atau jumlah produk maka data transaksi tersebut bisa di hapus
+
+BUKA GUI SECARA FULLSCREN AGAR TANGGAL TERLIHAT
+
+
+
+
+
+
+Struktur Tabel Database
+
+Tabel `produk`
+| Kolom         | Tipe Data         | Deskripsi                                    |
+|---------------|-------------------|----------------------------------------------|
+| id_produk     | INT (Auto Increment) | Primary key untuk setiap produk.            |
+| nama_produk   | VARCHAR(100)      | Nama produk.                                |
+| harga_produk  | DECIMAL(65, 10)   | Harga produk.                               |
+
+Tabel `transaksi`
+| Kolom            | Tipe Data         | Deskripsi                                   |
+|------------------|-------------------|---------------------------------------------|
+| id_transaksi     | INT (Auto Increment) | Primary key untuk setiap transaksi.        |
+| id_produk        | INT               | Foreign key yang merujuk ke tabel `produk`. |
+| jumlah_produk    | INT               | Jumlah produk yang dibeli.                 |
+| total_harga      | DECIMAL(65, 10)   | Total harga dari transaksi.                |
+| tanggal_transaksi| DATE              | Tanggal transaksi dilakukan.               |
+
+Semua data di tabel `transaksi` berelasi dengan tabel `produk` melalui kolom `id_produk`. Sistem ini mendukung penambahan, penghapusan, dan pembaruan data baik di tabel `produk` maupun `transaksi` melalui aplikasi GUI.
+
